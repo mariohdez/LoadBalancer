@@ -3,8 +3,34 @@
  */
 package org.mariocoding.loadbalancer;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+
+import org.mariocoding.loadbalancer.core.ConnectionListenerThread;
+
 public class App {
-    public static void main(String[] args) {
-	System.out.println("Hello, world.");
+    private final static Logger LOGGER = LoggerFactory.getLogger(App.class);
+
+    public static void main(String[] args) throws IOException {
+        if (args.length != 1) {
+            LOGGER.error("Must supply the port to run the load balancer on as an argument.");
+        }
+
+        String portStr = args[0];
+        int port = 0;
+
+        try {
+            port = Integer.parseInt(portStr);
+        } catch (NumberFormatException e) {
+            LOGGER.error("port argument supplied: {}. Not an integer.", portStr);
+            return;
+        }
+
+        ConnectionListenerThread connectionListenerThread = new ConnectionListenerThread(port);
+        connectionListenerThread.start();
+
+        return;
     }
 }
