@@ -18,6 +18,7 @@ val jacksonVersion = "2.16.1"
 val slf4jVersion = "2.0.11"
 val logbackClassicVersion = "1.4.14"
 val junitVersion = "5.9.2"
+val gsonVersion = "2.10.1"
 
 repositories {
     mavenCentral()
@@ -30,6 +31,8 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:$jacksonVersion")
     implementation("org.slf4j:slf4j-api:$slf4jVersion")
     implementation("ch.qos.logback:logback-classic:$logbackClassicVersion")
+    implementation("com.google.code.gson:gson:2.10.1")
+
 
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junitVersion")

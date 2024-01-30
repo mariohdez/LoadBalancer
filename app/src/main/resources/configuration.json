@@ -1,0 +1,18 @@
+{
+    "port": 8001,
+    "servers": [
+        {
+            "host": "localhost",
+            "port": 8004
+        },
+        {
+            "host": "localhost",
+            "port": 8003
+        },
+        {
+            "host": "localhost",
+            "port": 8002
+        }
+    ]
+}
+

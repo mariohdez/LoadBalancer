@@ -6,31 +6,54 @@ package org.mariocoding.loadbalancer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.gson.Gson;
+
 import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 import org.mariocoding.loadbalancer.core.ConnectionListenerThread;
+import org.mariocoding.loadbalancer.config.Configuration;
 
 public class App {
     private final static Logger LOGGER = LoggerFactory.getLogger(App.class);
 
     public static void main(String[] args) throws IOException {
-        if (args.length != 1) {
-            LOGGER.error("Must supply the port to run the load balancer on as an argument.");
-        }
-
-        String portStr = args[0];
-        int port = 0;
+        FileReader fileReader;
+        String filePath = "src/main/resources/configuration.json";
 
         try {
-            port = Integer.parseInt(portStr);
-        } catch (NumberFormatException e) {
-            LOGGER.error("port argument supplied: {}. Not an integer.", portStr);
-            return;
+            fileReader = new FileReader(filePath);
+        } catch (FileNotFoundException fnfe) {
+            throw fnfe;
         }
 
-        ConnectionListenerThread connectionListenerThread = new ConnectionListenerThread(port);
+        String configurationJson = getFileContent(fileReader);
+
+
+        Gson gson = new Gson();
+        Configuration configuration = gson.fromJson(configurationJson, Configuration.class);
+
+        System.out.println(configuration.toString());
+
+        ConnectionListenerThread connectionListenerThread = new ConnectionListenerThread(configuration.getPort());
         connectionListenerThread.start();
 
         return;
+    }
+
+    private static String getFileContent(FileReader fileReader) throws IOException {
+        StringBuffer sb = new StringBuffer();
+        int i = 0;
+
+        try {
+            while ((i = fileReader.read()) != -1) {
+                sb.append((char) i);
+            }
+        } catch (IOException ioe) {
+            throw ioe;
+        }
+
+        return sb.toString();
     }
 }
