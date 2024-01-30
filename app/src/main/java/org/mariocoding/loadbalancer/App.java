@@ -34,6 +34,8 @@ public class App {
         Gson gson = new Gson();
         Configuration configuration = gson.fromJson(configurationJson, Configuration.class);
 
+        LOGGER.info(configuration.toString());
+
         System.out.println(configuration.toString());
 
         ConnectionListenerThread connectionListenerThread = new ConnectionListenerThread(configuration.getPort());
