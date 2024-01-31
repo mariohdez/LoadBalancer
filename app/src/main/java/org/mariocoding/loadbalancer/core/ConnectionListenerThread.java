@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import org.mariocoding.loadbalancer.config.Server;
+import org.mariocoding.loadbalancer.model.Server;
 
 public class ConnectionListenerThread extends Thread implements Closeable {
 	private final static Logger LOGGER = LoggerFactory.getLogger(ConnectionListenerThread.class);

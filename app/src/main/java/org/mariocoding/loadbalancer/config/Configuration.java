@@ -1,5 +1,7 @@
 package org.mariocoding.loadbalancer.config;
 
+import org.mariocoding.loadbalancer.model.Server;
+
 public class Configuration {
     private int port;
     private Server[] servers;

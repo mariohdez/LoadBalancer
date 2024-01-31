@@ -1,6 +1,6 @@
 package org.mariocoding.loadbalancer.core;
 
-import org.mariocoding.loadbalancer.config.Server;
+import org.mariocoding.loadbalancer.model.Server;
 
 public class RoundRobinRouter implements Router {
     private final Server[] servers;

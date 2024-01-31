@@ -1,4 +1,4 @@
-package org.mariocoding.loadbalancer.config;
+package org.mariocoding.loadbalancer.model;
 
 public class Server {
     private String host;
