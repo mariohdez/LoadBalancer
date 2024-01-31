@@ -26,7 +26,7 @@ public class ConnectionListenerThread extends Thread implements Closeable {
         this.port = port;
         this.router = router;
         this.serverSocket = new ServerSocket(this.port);
-	}
+    }
 
     @Override
     public void run() {
