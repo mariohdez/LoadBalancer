@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import org.mariocoding.loadbalancer.router.Router;
 import org.mariocoding.loadbalancer.model.Server;
 
 public class ConnectionListenerThread extends Thread implements Closeable {

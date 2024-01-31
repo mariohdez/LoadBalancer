@@ -14,8 +14,8 @@ import java.io.FileReader;
 
 import org.mariocoding.loadbalancer.core.ConnectionListenerThread;
 import org.mariocoding.loadbalancer.config.Configuration;
-import org.mariocoding.loadbalancer.core.Router;
-import org.mariocoding.loadbalancer.core.RoundRobinRouter;
+import org.mariocoding.loadbalancer.router.Router;
+import org.mariocoding.loadbalancer.router.RoundRobinRouter;
 
 public class App {
     private final static Logger LOGGER = LoggerFactory.getLogger(App.class);

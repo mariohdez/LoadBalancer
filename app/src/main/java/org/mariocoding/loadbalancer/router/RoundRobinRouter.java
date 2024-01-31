@@ -1,4 +1,4 @@
-package org.mariocoding.loadbalancer.core;
+package org.mariocoding.loadbalancer.router;
 
 import org.mariocoding.loadbalancer.model.Server;
 
