@@ -14,6 +14,8 @@ import java.io.FileReader;
 
 import org.mariocoding.loadbalancer.core.ConnectionListenerThread;
 import org.mariocoding.loadbalancer.config.Configuration;
+import org.mariocoding.loadbalancer.core.Router;
+import org.mariocoding.loadbalancer.core.RoundRobinRouter;
 
 public class App {
     private final static Logger LOGGER = LoggerFactory.getLogger(App.class);
@@ -38,7 +40,9 @@ public class App {
 
         System.out.println(configuration.toString());
 
-        ConnectionListenerThread connectionListenerThread = new ConnectionListenerThread(configuration.getPort());
+        Router router = new RoundRobinRouter(configuration.getServers());
+
+        ConnectionListenerThread connectionListenerThread = new ConnectionListenerThread(configuration.getPort(), router);
         connectionListenerThread.start();
 
         return;
