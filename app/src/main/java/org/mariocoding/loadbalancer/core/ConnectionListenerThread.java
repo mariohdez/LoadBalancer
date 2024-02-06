@@ -44,7 +44,9 @@ public class ConnectionListenerThread extends Thread implements Closeable {
                 LOGGER.info("socket unique identifier: {}", strBuilder.toString());
 
                 Server server = this.router.getServer();
-                socket.getOutputStream().write("".getBytes());
+
+                ConnectionWorkerThread connectionWorkerThread = new ConnectionWorkerThread(socket, server);
+                connectionWorkerThread.start();
             }
         }  catch (IOException ioe) {
             LOGGER.error("Problem with setting socket", ioe);
